@@ -66,9 +66,10 @@ func Distribute() func(c *gin.Context) {
 				}
 			}
 			// Check if model starts with "gpt-4-gizmo-"
-			var model = modelRequest.Model ;
+			 model := modelRequest.Model
              if strings.HasPrefix(model, "gpt-4-gizmo-") {
-                     model = "gpt-4-gizmo-*"
+                        // 如果是，将 model 设为 "gpt-4-gizmo-*"
+                        model = "gpt-4-gizmo-*"
              }
 			channel, err = model.CacheGetRandomSatisfiedChannel(userGroup, model)
 			if err != nil {
