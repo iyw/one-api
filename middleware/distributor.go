@@ -65,13 +65,7 @@ func Distribute() func(c *gin.Context) {
 					modelRequest.Model = "whisper-1"
 				}
 			}
-			// Check if model starts with "gpt-4-gizmo-"
-			 model:string = modelRequest.Model
-             if strings.HasPrefix(model, "gpt-4-gizmo-") {
-                        // 如果是，将 model 设为 "gpt-4-gizmo-*"
-                        model = "gpt-4-gizmo-*"
-             }
-			channel, err = model.CacheGetRandomSatisfiedChannel(userGroup, model)
+			channel, err = model.CacheGetRandomSatisfiedChannel(userGroup, modelRequest.Model)
 			if err != nil {
 				//message := fmt.Sprintf("当前分组 %s 下对于模型 %s 无可用渠道", userGroup, modelRequest.Model)
 				message := fmt.Sprintf("使用模型(%s)需VIP权限, 联系 QQ:2374004418升级VIP， 地址: https://api.proxyai.top 注册即送0.5$，现活动期间充值享受3折折扣。", modelRequest.Model)
