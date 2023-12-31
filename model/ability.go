@@ -21,7 +21,6 @@ func GetRandomSatisfiedChannel(group string, model string) (*Channel, error) {
 		groupCol = `"group"`
 		trueVal = "true"
 	}
-
 	var err error = nil
 	maxPrioritySubQuery := DB.Model(&Ability{}).Select("MAX(priority)").Where(groupCol+" = ? and model = ? and enabled = "+trueVal, group, model)
 	channelQuery := DB.Where(groupCol+" = ? and model = ? and enabled = "+trueVal+" and priority = (?)", group, model, maxPrioritySubQuery)
