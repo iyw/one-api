@@ -76,7 +76,11 @@ func Distribute() func(c *gin.Context) {
 				abortWithMessage(c, http.StatusServiceUnavailable, message)
 				return
 			}
+			//
 		}
+		if strings.HasPrefixm(modelRequest.Model, "gpt-4-gizmo") && c.Param("g") != "" {
+			modelRequest.Model = "gpt-4-gizmo"  + c.Param("g")
+	   }
 		c.Set("channel", channel.Type)
 		c.Set("channel_id", channel.Id)
 		c.Set("channel_name", channel.Name)
