@@ -122,7 +122,7 @@ func GetModelRatio(name string) float64 {
 	ratio, ok := ModelRatio[name]
 	if !ok {
 		SysError("model ratio not found: " + name)
-		return 30
+		return 20
 	}
 	return ratio
 }
